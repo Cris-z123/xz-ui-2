@@ -1,27 +1,14 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import { resolve } from 'path'
-import eslintPlugin from 'vite-plugin-eslint';
-//@ts-ignore
-// import viteSvgIcons from 'vite-plugin-svg-icons';
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    // viteSvgIcons({
-    // iconDirs: [resolve(process.cwd(), 'src/icons')],
-    // symbolId: 'icon-[dir]-[name]',
-    // }),
-    eslintPlugin({
-      exclude: ['./node_modules/**'],
-      cache: false
-    })
-  ],
-  optimizeDeps:{
+  plugins: [vue()],
+  optimizeDeps: {
     entries: [],
     include: [],
-    exclude: [],
+    exclude: []
   },
   publicDir: 'public',
   base: './',
@@ -29,23 +16,15 @@ export default defineConfig({
   logLevel: 'info',
   clearScreen: true,
   resolve: {
-    alias: [
-      { find: '@', replacement: resolve(__dirname, 'src')}
-    ],
+    alias: [{ find: '@', replacement: resolve(__dirname, 'src') }],
     conditions: [],
     extensions: ['.ts', '.js', '.jsx', '.tsx', '.json']
   },
   css: {
-    modules: {
-
-    },
-    postcss: {
-
-    },
+    modules: {},
+    postcss: {},
     preprocessorOptions: {
-      scss: {
-
-      }
+      scss: {}
     }
   },
   server: {
@@ -55,7 +34,7 @@ export default defineConfig({
     port: 8020,
     strictPort: false,
     force: true,
-    hmr: false,
+    hmr: false
     // proxy: {
     //   '/api': {
     //     target: '',
@@ -65,22 +44,20 @@ export default defineConfig({
     // }
   },
   build: {
-    target: "modules",
+    target: 'modules',
     outDir: 'dist',
     assetsDir: 'assets',
     assetsInlineLimit: 4096,
     cssCodeSplit: true,
     sourcemap: false,
-    commonjsOptions: {
-
-    },
+    commonjsOptions: {},
     manifest: false,
-    minify: "terser",
+    minify: 'terser',
     terserOptions: {
       compress: {
         keep_infinity: true,
         drop_console: true,
-        drop_debugger: true,
+        drop_debugger: true
       }
     },
     write: true,
@@ -88,4 +65,4 @@ export default defineConfig({
     brotliSize: true,
     chunkSizeWarningLimit: 5000
   }
-})
+});

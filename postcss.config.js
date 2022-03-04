@@ -1,5 +1,5 @@
 module.exports = {
   plugins: {
-    autoprefixer: { remove: false },
-  },
+    autoprefixer: { remove: false }
+  }
 };
