@@ -8,9 +8,6 @@
 
 <script setup lang="ts">
 import TopNav from '../components/TopNav.vue';
-
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
