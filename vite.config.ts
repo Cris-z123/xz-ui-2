@@ -16,7 +16,11 @@ export default defineConfig({
   logLevel: 'info',
   clearScreen: true,
   resolve: {
-    alias: [{ find: '@', replacement: resolve(__dirname, 'src') }],
+    alias: {
+      '@': resolve(__dirname, 'src'),
+      views: resolve(__dirname, './src/views'),
+      components: resolve(__dirname, './src/components')
+    },
     conditions: [],
     extensions: ['.ts', '.js', '.jsx', '.tsx', '.json']
   },
@@ -29,12 +33,8 @@ export default defineConfig({
   },
   server: {
     host: 'localhost',
-    https: false,
     cors: true,
-    port: 8020,
-    strictPort: false,
-    force: true,
-    hmr: false
+    port: 8020
     // proxy: {
     //   '/api': {
     //     target: '',
@@ -44,7 +44,6 @@ export default defineConfig({
     // }
   },
   build: {
-    target: 'modules',
     outDir: 'dist',
     assetsDir: 'assets',
     assetsInlineLimit: 4096,
@@ -63,6 +62,6 @@ export default defineConfig({
     write: true,
     emptyOutDir: true,
     brotliSize: true,
-    chunkSizeWarningLimit: 5000
+    chunkSizeWarningLimit: 3000
   }
 });
