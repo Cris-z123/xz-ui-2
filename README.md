@@ -1,10 +1,10 @@
 <h1 align="center">XZ UI</h1>
 
-<div align="center">
-这是我个人在使用vu3.x过程中制作的一个UI组件库，希望它可以对你有帮助
-</div>
+<h3 align="center">
+这是我个人在使用vu3.x过程中制作的一个UI组件库，也可以作为vue3项目的初始化模板，欢迎使用，希望它可以对你有帮助。
+</h3>
 
-- 首页: https://rookie996-object.github.io/xz-ui-website/
+- 首页: 
 
 ## 环境和依赖
 
