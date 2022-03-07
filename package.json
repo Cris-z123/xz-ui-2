@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
+    "build:dev": "vite build --mode development",
+    "build:pro": "vite build --mode production",
     "preserve": "vite build",
-    "serve": "vite preview --port 5050",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint --ext .js, .ts,.vue src",
     "lint:fix": "npx eslint ./src/**/*.vue --fix",
@@ -29,6 +30,7 @@
     ]
   },
   "dependencies": {
+    "axios": "^0.26.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.11",
     "vue": "^3.2.25",
