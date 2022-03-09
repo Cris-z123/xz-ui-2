@@ -1,0 +1,3 @@
+VITE_API_ENV=pro
+
+VITE_APP_BASE_URL=

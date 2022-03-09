@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "build:dev": "vite build --mode development",
-    "build:pro": "vite build --mode production",
+    "build:dev": "vite build --mode dev",
+    "build:pro": "vite build --mode pro",
     "preserve": "vite build",
     "typecheck": "vue-tsc --noEmit",
     "lint": "eslint --ext .js, .ts,.vue src",

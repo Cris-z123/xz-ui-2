@@ -13,7 +13,6 @@ export default defineConfig({
   publicDir: 'public',
   base: './',
   assetsInclude: '',
-  logLevel: 'info',
   clearScreen: true,
   resolve: {
     alias: {
@@ -59,8 +58,6 @@ export default defineConfig({
         drop_debugger: true
       }
     },
-    write: true,
-    emptyOutDir: true,
     brotliSize: true,
     chunkSizeWarningLimit: 3000
   }
