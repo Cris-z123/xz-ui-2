@@ -3,8 +3,10 @@ import App from './App.vue';
 import router from './router/index';
 import NProgress from 'nprogress';
 import { createPinia } from 'pinia';
-import './normalize.scss';
-import './index.scss';
+
+import '@/styles/tailwind.css';
+import '@/styles/normalize.scss';
+import '@/styles/project.scss';
 
 router.beforeEach(() => {
   NProgress.start();
