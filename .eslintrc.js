@@ -12,7 +12,8 @@ module.exports = {
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:vue/vue3-recommended',
-    'prettier'
+    'prettier',
+    'plugin:prettier/recommended'
   ],
   rules: {
     'prettier/prettier': 'warn',
@@ -90,15 +91,31 @@ module.exports = {
     'vue/require-default-prop': 'off',
 
     'vue/script-setup-uses-vars': 'error',
+
     'vue/multi-word-component-names': 'off',
-    // typescript-eslint 配置
+
+    // 禁止使用@ts-ignore来消除ESLint检查
     '@typescript-eslint/ban-ts-ignore': 'off',
+
+    // 在函数和类方法上需要显式的返回类型
     '@typescript-eslint/explicit-function-return-type': 'off',
+
+    // 禁止使用any类型
     '@typescript-eslint/no-explicit-any': 'off',
+
+    // 禁止使用空函数
     '@typescript-eslint/no-empty-function': 'off',
+
+    // 禁止使用@ts-注释
     '@typescript-eslint/ban-ts-comment': 'off',
+
+    // 禁止使用特定类型
     '@typescript-eslint/ban-types': 'off',
+
+    // 禁止使用!后缀运算符进行非null断言
     '@typescript-eslint/no-non-null-assertion': 'off',
+
+    // 禁止使用未使用的变量
     '@typescript-eslint/no-unused-vars': [
       'error',
       {
