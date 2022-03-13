@@ -23,13 +23,14 @@ export default defineConfig({
     conditions: [],
     extensions: ['.ts', '.js', '.jsx', '.tsx', '.json']
   },
-  css: {
-    modules: {},
-    postcss: {},
-    preprocessorOptions: {
-      scss: {}
-    }
-  },
+  // 如果提供了该内联配置，Vite 将不会搜索其他 PostCSS 配置源。
+  // css: {
+  //   modules: {},
+  //   postcss: {},
+  //   preprocessorOptions: {
+  //     scss: {}
+  //   }
+  // },
   server: {
     host: 'localhost',
     cors: true,
