@@ -19,7 +19,7 @@
 - 拉取项目代码
 
 ```bash
-git clone https://github.com/rookie996-object/xz-ui-2.git
+git clone https://github.com/Cris-z123/xz-ui-2.git
 cd xz-ui-2
 ```
 
