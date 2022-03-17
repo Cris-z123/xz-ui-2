@@ -1,13 +1,13 @@
 <template>
-  <TopNav />
+  <Header />
   <div class="content">
-    <aside>边栏</aside>
-    <main>主内容</main>
+    <SideNav />
+    <Content />
   </div>
 </template>
 
 <script setup lang="ts">
-import TopNav from '../components/TopNav.vue';
+import Header from 'components/Header.vue';
+import SideNav from 'components/SideNav.vue';
+import Content from 'components/Content.vue';
 </script>
-
-<style scoped></style>
