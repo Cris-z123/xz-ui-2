@@ -9,7 +9,29 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/doc',
     name: 'Doc',
-    component: () => import('@/views/Doc.vue')
+    component: () => import('@/views/Doc.vue'),
+    children: [
+      {
+        path: 'switch',
+        name: 'Switch',
+        component: () => import('@/views/Switch.vue')
+      },
+      {
+        path: 'button',
+        name: 'Button',
+        component: () => import('@/views/Button.vue')
+      },
+      {
+        path: 'dialog',
+        name: 'Dialog',
+        component: () => import('@/views/Dialog.vue')
+      },
+      {
+        path: 'tabs',
+        name: 'Tabs',
+        component: () => import('@/views/Tabs.vue')
+      }
+    ]
   }
 ];
 
