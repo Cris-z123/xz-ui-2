@@ -4,6 +4,9 @@ import router from './router/index';
 import NProgress from 'nprogress';
 import { createPinia } from 'pinia';
 
+import '@iconify/iconify';
+import '@purge-icons/generated';
+
 import '@/styles/tailwind.css';
 import '@/styles/normalize.scss';
 import '@/styles/project.scss';
