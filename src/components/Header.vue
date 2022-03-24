@@ -8,70 +8,73 @@
       >
         <div class="relative flex items-center">
           <router-link
-            class="mr-3 flex-none w-[2.0625rem] overflow-hidden md:w-auto"
+            class="mr-3 ml-10 flex-none w-[2.0625rem] overflow-hidden md:w-auto"
             to="/"
           >
             <img
               src="../assets/logo.png"
               alt="xz-ui"
-              class="inline w-auto h-5"
+              class="inline w-auto h-7"
             />
-            <span class="text-slate-900 dark:text-white w-auto h-5">
+            <span class="text-slate-900 dark:text-white text-lg">
               xz-ui-2
             </span>
           </router-link>
-          <div class="relative hidden lg:flex items-center ml-auto">
-            <nav
-              class="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200"
+          <div class="relative lg:flex items-center ml-auto">
+            <router-link
+              class="flex space-x-8 items-center text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200 hover:text-sky-500 dark:hover:text-sky-400"
+              to="/doc/"
             >
-              <ul class="flex space-x-8">
-                <li>
-                  <router-link
-                    class="hover:text-sky-500 dark:hover:text-sky-400"
-                    to="/doc/"
-                  >
-                    文档
-                  </router-link>
-                </li>
-              </ul>
-            </nav>
+              文档
+            </router-link>
             <div
               class="flex items-center border-l border-slate-200 ml-6 pl-6 dark:border-slate-800"
             >
-              <button>切换</button>
+              <button @click="toggleDarkMode">
+                <Icon v-if="themeIcon === 'sun'" name="sun" />
+                <Icon v-else-if="themeIcon === 'moon'" name="moon" />
+              </button>
               <a
                 href="https://github.com/Cris-z123/xz-ui-2"
                 target="_black"
                 class="ml-6 block text-slate-400 hover:text-slate-500 dark:hover:text-slate-300"
               >
-                GitHub
+                <Icon name="github" />
               </a>
             </div>
           </div>
         </div>
+      </div>
+      <div
+        class="flex items-center p-4 border-b border-slate-900/10 lg:hidden dark:border-slate-50/[0.06]"
+      >
+        <button
+          type="button"
+          class="text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
+        >
+          <Icon name="menu" />
+        </button>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// On page load or when changing themes, best to add inline in `head` to avoid FOUC
-if (
-  localStorage.theme === 'dark' ||
-  (!('theme' in localStorage) &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches)
-) {
-  document.documentElement.classList.add('dark');
-} else {
-  document.documentElement.classList.remove('dark');
-}
+import Icon from 'components/Icon.vue';
+import { useTheme } from '@/stores/theme';
+import { storeToRefs } from 'pinia';
+import { computed, onMounted } from 'vue';
 
-// Whenever the user explicitly chooses light mode
-localStorage.theme = 'light';
+const themeStore = useTheme();
+const { theme } = storeToRefs(themeStore);
 
-// Whenever the user explicitly chooses dark mode
-localStorage.theme = 'dark';
+const themeIcon = computed(() => (theme.value === 'sun' ? 'sun' : 'moon'));
 
-// Whenever the user explicitly chooses to respect the OS preference
-localStorage.removeItem('theme');
+onMounted(() => themeStore.getTheme());
+
+const toggleDarkMode = () => {
+  themeStore.setTheme(theme);
+};
+
+onMounted(() => themeStore.getTheme());
 </script>

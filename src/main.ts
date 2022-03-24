@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router/index';
 import NProgress from 'nprogress';
+import piniaPluginPersist from 'pinia-plugin-persist';
 import { createPinia } from 'pinia';
 
 import '@iconify/iconify';
@@ -21,5 +22,5 @@ router.afterEach(() => {
 
 const app = createApp(App);
 app.use(router);
-app.use(createPinia());
+app.use(createPinia().use(piniaPluginPersist));
 app.mount('#app');
