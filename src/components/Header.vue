@@ -13,7 +13,7 @@
           >
             <img
               src="../assets/logo.png"
-              alt="xz-ui"
+              alt="xz-ui-2"
               class="inline w-auto h-7"
             />
             <span class="text-slate-900 dark:text-white text-lg">
@@ -30,9 +30,9 @@
             <div
               class="flex items-center border-l border-slate-200 ml-6 pl-6 dark:border-slate-800"
             >
-              <button @click="toggleDarkMode">
-                <Icon v-if="themeIcon === 'sun'" name="sun" />
-                <Icon v-else-if="themeIcon === 'moon'" name="moon" />
+              <button @click="toggleDark()">
+                <Icon v-if="isDark" name="moon" />
+                <Icon v-else name="sun" />
               </button>
               <a
                 href="https://github.com/Cris-z123/xz-ui-2"
@@ -51,6 +51,7 @@
         <button
           type="button"
           class="text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
+          @click="toggleMenu"
         >
           <Icon name="menu" />
         </button>
@@ -61,20 +62,21 @@
 
 <script setup lang="ts">
 import Icon from 'components/Icon.vue';
-import { useTheme } from '@/stores/theme';
-import { storeToRefs } from 'pinia';
-import { computed, onMounted } from 'vue';
+import { useDark, useToggle } from '@vueuse/core';
+import { useAnimation } from '@/stores/animation';
 
-const themeStore = useTheme();
-const { theme } = storeToRefs(themeStore);
+const isDark = useDark({
+  selector: 'html',
+  attribute: 'class',
+  valueDark: 'dark',
+  valueLight: ''
+});
 
-const themeIcon = computed(() => (theme.value === 'sun' ? 'sun' : 'moon'));
+const toggleDark = useToggle(isDark);
 
-onMounted(() => themeStore.getTheme());
+const menuStore = useAnimation();
 
-const toggleDarkMode = () => {
-  themeStore.setTheme(theme);
+const toggleMenu = () => {
+  menuStore.toggleMenu();
 };
-
-onMounted(() => themeStore.getTheme());
 </script>
