@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import Header from 'components/Header.vue';
-import SideNav from 'components/SideNav.vue';
-import Content from 'components/Content.vue';
+import Header from '@/layout/Header.vue';
+import SideNav from '@/layout/SideNav.vue';
+import Content from '@/layout/Content.vue';
 </script>
