@@ -30,7 +30,7 @@
             <div
               class="flex items-center border-l border-slate-200 ml-6 pl-6 dark:border-slate-800"
             >
-              <button @click="toggleDark()">
+              <button class="text-sky-500" @click="toggleDark()">
                 <Icon v-if="isDark" name="moon" />
                 <Icon v-else name="sun" />
               </button>
