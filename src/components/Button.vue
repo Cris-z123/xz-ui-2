@@ -1,10 +1,11 @@
 <template>
   <button
-    class="inline-flex align-center justify-center leading-6 text-center shadow whitespace-nowrap rounded border border-current focus:outline-none"
-    :class="[backgroundColor, buttonSize, disabledCursor]"
+    class="inline-flex align-center justify-center leading-6 text-center shadow whitespace-nowrap focus:outline-none animate-ripples"
+    :class="[backgroundColor, buttonSize, disabledCursor, shape]"
     :disabled="disabled"
   >
-    <Icon v-if="icon" size="small" :name="icon" />
+    <Icon v-if="loading" size="small" name="loader-5" class="animate-spin" />
+    <Icon v-else-if="icon" size="small" :name="icon" />
     <slot></slot>
   </button>
 </template>
@@ -29,21 +30,31 @@ const props = defineProps({
   icon: {
     type: String,
     default: ''
+  },
+  shape: {
+    type: String,
+    default: 'default'
+  },
+  loading: {
+    type: Boolean,
+    default: false
   }
 });
 
 const disabledCursor = computed(() =>
-  props.disabled
-    ? 'bg-transparent text-gray-300 dark:text-slate-700 cursor-not-allowed'
-    : 'text-slate-700 dark:text-slate-400 transition ease-in-out delay-100 hover:opacity-80 duration-250'
+  props.disabled || props.loading
+    ? 'bg-gray-200 text-gray-300 border border-current cursor-not-allowed dark:bg-transparent dark:text-slate-700'
+    : 'text-slate-700 transition ease-in-out delay-100 hover:opacity-80 duration-250 dark:text-slate-100'
 );
 
 const colorClassMap: { [key: string]: string } = {
-  primary: '',
-  default: '',
-  ghost: 'bg-transparent',
+  primary: 'bg-blue-400',
+  default: 'border border-current',
+  ghost: 'bg-transparent border border-current',
   success: 'bg-green-400',
-  error: 'bg-red-400'
+  error: 'bg-red-400',
+  dashed: 'outline-dashed outline-1 outline-offset-0',
+  text: 'bg-transparent hover:bg-gray-100 shadow-none hover:shadow dark:hover:bg-gray-700'
 };
 
 const backgroundColor = computed(() => colorClassMap[props.theme]);
@@ -54,4 +65,10 @@ const sizeClassMap: { [key: string]: string } = {
   large: 'h-10 px-4 py-2'
 };
 const buttonSize = computed(() => sizeClassMap[props.size]);
+
+const shapeMap: { [key: string]: string } = {
+  default: 'rounded',
+  circle: 'rounded-full'
+};
+const shape = computed(() => shapeMap[props.shape]);
 </script>
