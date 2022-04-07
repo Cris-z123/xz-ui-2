@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <div class="content">
+  <div class="content max-w-8xl mx-auto px-4 sm:px-6 md:px-8">
     <SideNav />
     <Content />
   </div>
