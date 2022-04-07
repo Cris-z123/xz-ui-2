@@ -1,7 +1,12 @@
 <template>
   <button
     class="relative rounded-full ease-in-out duration-300"
-    :class="[backgroundColor, outsideSize, disabledCursor]"
+    :class="[
+      backgroundColor,
+      outsideSize,
+      disabledCursor,
+      { 'animate-ripples': showClickAnimate }
+    ]"
     type="button"
     :disabled="disabled"
     @click="toggleSwitch"
@@ -15,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, Ref, ref } from 'vue';
 
 const props = defineProps({
   checked: {
@@ -29,8 +34,14 @@ const props = defineProps({
   disabled: {
     type: Boolean,
     default: false
+  },
+  loading: {
+    type: Boolean,
+    default: false
   }
 });
+
+const showClickAnimate: Ref<boolean> = ref(false);
 
 const emits = defineEmits(['update:checked']);
 
@@ -48,15 +59,24 @@ const insideSize = computed(() =>
 
 const toggleAnimation = computed(() =>
   props.checked
-    ? `translate-x-${props.size === 'default' ? '5' : '3'}`
+    ? props.size === 'default'
+      ? 'translate-x-5'
+      : 'translate-x-3'
     : 'translate-x-0'
 );
 
 const disabledCursor = computed(() =>
-  props.disabled ? 'cursor-not-allowed' : ''
+  props.disabled || props.loading ? 'cursor-not-allowed' : ''
 );
 
 const toggleSwitch = () => {
+  if (!props.disabled && !props.loading) {
+    showClickAnimate.value = !showClickAnimate.value;
+    setTimeout(() => {
+      showClickAnimate.value = !showClickAnimate.value;
+    }, 300);
+  }
+
   emits('update:checked', !props.checked);
 };
 </script>

@@ -1,8 +1,15 @@
 <template>
   <button
-    class="inline-flex align-center justify-center leading-6 text-center shadow whitespace-nowrap focus:outline-none animate-ripples"
-    :class="[backgroundColor, buttonSize, disabledCursor, shape]"
+    class="inline-flex align-center justify-center leading-6 text-center shadow whitespace-nowrap focus:outline-none"
+    :class="[
+      backgroundColor,
+      buttonSize,
+      disabledCursor,
+      shape,
+      { 'animate-ripples': showClickAnimate }
+    ]"
     :disabled="disabled"
+    @click="onClickAnimate"
   >
     <Icon v-if="loading" size="small" name="loader-5" class="animate-spin" />
     <Icon v-else-if="icon" size="small" :name="icon" />
@@ -11,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, Ref, ref } from 'vue';
 import Icon from 'components/Icon.vue';
 
 const props = defineProps({
@@ -40,6 +47,8 @@ const props = defineProps({
     default: false
   }
 });
+
+const showClickAnimate: Ref<boolean> = ref(false);
 
 const disabledCursor = computed(() =>
   props.disabled || props.loading
@@ -71,4 +80,13 @@ const shapeMap: { [key: string]: string } = {
   circle: 'rounded-full'
 };
 const shape = computed(() => shapeMap[props.shape]);
+
+const onClickAnimate = () => {
+  if (!props.disabled && !props.loading) {
+    showClickAnimate.value = !showClickAnimate.value;
+    setTimeout(() => {
+      showClickAnimate.value = !showClickAnimate.value;
+    }, 300);
+  }
+};
 </script>
