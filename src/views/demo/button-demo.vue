@@ -11,19 +11,22 @@
     <Button disabled>disabled</Button>
   </div>
   <div class="relative rounded-xl overflow-auto p-8">
-    <Button theme="primary">primary</Button>
-    <Button theme="default">default</Button>
-    <Button theme="ghost">ghost</Button>
-    <Button theme="success">success</Button>
-    <Button theme="error">error</Button>
-    <Button theme="dashed">dashed</Button>
-    <Button theme="text">text</Button>
+    <Button type="primary">primary</Button>
+    <Button type="default">default</Button>
+    <Button type="ghost">ghost</Button>
+    <Button type="success">success</Button>
+    <Button type="error">error</Button>
+    <Button type="dashed">dashed</Button>
+    <Button type="text">text</Button>
+    <Button type="link">text</Button>
   </div>
   <div class="relative rounded-xl overflow-auto p-8">
     <Button shape="circle">circle</Button>
   </div>
   <div class="relative rounded-xl overflow-auto p-8">
     <Button :loading="true" icon="add">loading</Button>
+    <Button :loading="true">loading</Button>
+    <Button :loading="false">loading</Button>
   </div>
 </template>
 

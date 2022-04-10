@@ -22,7 +22,7 @@ import { computed, Ref, ref } from 'vue';
 import Icon from 'components/Icon.vue';
 
 const props = defineProps({
-  theme: {
+  type: {
     type: String,
     default: 'primary'
   },
@@ -52,7 +52,7 @@ const showClickAnimate: Ref<boolean> = ref(false);
 
 const disabledCursor = computed(() =>
   props.disabled || props.loading
-    ? 'bg-gray-200 text-gray-300 border border-current cursor-not-allowed dark:bg-transparent dark:text-slate-700'
+    ? 'bg-gray-200 text-slate-500 border border-current cursor-not-allowed dark:bg-transparent'
     : 'text-slate-700 transition ease-in-out delay-100 hover:opacity-80 duration-250 dark:text-slate-100'
 );
 
@@ -63,10 +63,11 @@ const colorClassMap: { [key: string]: string } = {
   success: 'bg-green-400',
   error: 'bg-red-400',
   dashed: 'outline-dashed outline-1 outline-offset-0',
-  text: 'bg-transparent hover:bg-gray-100 shadow-none hover:shadow dark:hover:bg-gray-700'
+  text: 'bg-transparent hover:bg-gray-100 shadow-none hover:shadow dark:hover:bg-gray-700',
+  link: 'bg-transparent shadow-none text-inherit'
 };
 
-const backgroundColor = computed(() => colorClassMap[props.theme]);
+const backgroundColor = computed(() => colorClassMap[props.type]);
 
 const sizeClassMap: { [key: string]: string } = {
   small: 'h-6 px-1 py-0',
