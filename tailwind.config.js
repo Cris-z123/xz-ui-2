@@ -11,10 +11,9 @@ module.exports = {
       keyframes: {
         border: {
           '0%': { boxShadow: '0 0 0 0 rgba(255, 255, 255, 0);' },
-          '25%': { boxShadow: '0 0 0 2px rgba(255, 255, 255, 0.2);' },
-          '50%': { boxShadow: '0 0 0 4px rgba(255, 255, 255, 0.4);' },
-          '75%': { boxShadow: '0 0 0 2px rgba(255, 255, 255, 0.2);' },
-          '100%': { boxShadow: '0 0 0 0px rgba(255, 255, 255, 0);' }
+          '33.3%': { boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.2);' },
+          '66.6%': { boxShadow: '0 0 0 2px rgba(255, 255, 255, 0.3);' },
+          '100%': { boxShadow: '0 0 0 1px rgba(255, 255, 255, 0.2);' }
         }
       }
     }
