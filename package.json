@@ -17,12 +17,6 @@
     "prepare": "husky install",
     "commit": "cz-customizable"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "src/**/*.{ts,vue}": [
       "eslint --fix",
