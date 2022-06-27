@@ -1,3 +1,3 @@
-VITE_API_ENV=pro
+VITE_API_ENV=production
 
 VITE_APP_BASE_URL=
