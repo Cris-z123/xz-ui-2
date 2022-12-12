@@ -64,7 +64,6 @@ export default defineConfig({
         drop_debugger: true
       }
     },
-    brotliSize: true,
     chunkSizeWarningLimit: 3000
   }
 });
