@@ -15,10 +15,11 @@
     "stylelint": "npx stylelint --aei .vue src",
     "stylint:fix": "npx stylelint ./src/**/*.vue --fix",
     "prepare": "husky install",
+    "preinstall": "npx only-allow yarn",
     "commit": "cz-customizable"
   },
   "lint-staged": {
-    "src/**/*.{ts,vue}": [
+    "src/**/*.{ts, js, vue}": [
       "eslint --fix",
       "prettier --write"
     ],
