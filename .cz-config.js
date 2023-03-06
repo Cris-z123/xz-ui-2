@@ -14,7 +14,7 @@ module.exports = {
     },
     {
       value: ':pencil2: docs',
-      name: '✏️  docs:     文档变更'
+      name: '✏️  docs:    文档变更'
     },
     {
       value: ':lipstick: style',
