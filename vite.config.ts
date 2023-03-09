@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import PurgeIcons from 'vite-plugin-purge-icons';
+import gzipPlugin from 'rollup-plugin-gzip';
 import { resolve } from 'path';
 
 // https://vitejs.dev/config/
@@ -64,6 +65,9 @@ export default defineConfig({
         drop_debugger: true
       }
     },
-    chunkSizeWarningLimit: 3000
+    chunkSizeWarningLimit: 3000,
+    rollupOptions: {
+      plugins: [gzipPlugin()]
+    }
   }
 });
