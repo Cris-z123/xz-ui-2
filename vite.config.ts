@@ -1,13 +1,20 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import PurgeIcons from 'vite-plugin-purge-icons';
+import gzipPlugin from 'rollup-plugin-gzip';
 import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    PurgeIcons({
+      content: ['**/*.html', '**/*.js', '**/*.vue']
+    })
+  ],
   optimizeDeps: {
     entries: [],
-    include: [],
+    include: ['@iconify/iconify'],
     exclude: []
   },
   publicDir: 'public',
@@ -23,14 +30,13 @@ export default defineConfig({
     conditions: [],
     extensions: ['.ts', '.js', '.jsx', '.tsx', '.json']
   },
-  // 如果提供了该内联配置，Vite 将不会搜索其他 PostCSS 配置源。
-  // css: {
-  //   modules: {},
-  //   postcss: {},
-  //   preprocessorOptions: {
-  //     scss: {}
-  //   }
-  // },
+  css: {
+    //   modules: {},
+    //   postcss: {}, // 如果提供了该内联配置，Vite 将不会搜索其他 PostCSS 配置源。
+    preprocessorOptions: {
+      scss: {}
+    }
+  },
   server: {
     host: 'localhost',
     cors: true,
@@ -59,7 +65,9 @@ export default defineConfig({
         drop_debugger: true
       }
     },
-    brotliSize: true,
-    chunkSizeWarningLimit: 3000
+    chunkSizeWarningLimit: 3000,
+    rollupOptions: {
+      plugins: [gzipPlugin()]
+    }
   }
 });

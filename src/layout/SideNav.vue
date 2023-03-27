@@ -1,8 +1,9 @@
 <template>
   <div
-    class="hidden lg:block fixed z-20 inset-0 top-[3.8125rem] left-[max(0px,calc(50%-45rem))] right-auto w-[19.5rem] pb-10 px-8 overflow-y-auto"
+    class="lg:block fixed z-20 inset-0 top-[3.8125rem] left-[max(0px,calc(50%-45rem))] right-auto w-[19.5rem] pb-10 px-8 overflow-y-auto"
+    :class="menuVisible ? 'hidden' : ''"
   >
-    <nav class="lg:text-sm lg:leading-6 relative">
+    <nav class="lg:text-base lg:leading-6 relative">
       <ul>
         <li class="mt-12 lg:mt-8">
           <h5
@@ -52,4 +53,9 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useAnimation } from '@/stores/animation';
+import { storeToRefs } from 'pinia';
+
+const { menuVisible } = storeToRefs(useAnimation());
+</script>
